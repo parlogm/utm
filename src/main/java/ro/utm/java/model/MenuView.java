@@ -34,7 +34,7 @@ public class MenuView {
         item = new DefaultMenuItem("Save");
         item.setIcon("ui-icon-disk");
         item.setCommand("#{menuView.save}");
-        item.setUpdate("messages");
+        item.setUpdate(":mainForm:msgs");
         secondSubmenu.addElement(item);
 
         item = new DefaultMenuItem("Delete");

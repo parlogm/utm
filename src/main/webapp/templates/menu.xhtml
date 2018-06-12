@@ -11,15 +11,15 @@
 <ui:composition>
 
     <h:form>
-        <p:growl id="messages" showDetail="false"/>
+
         <h3>Toggleable</h3>
         <p:menu toggleable="true">
             <p:submenu label="Ajax">
-                <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
-                <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                <p:menuitem value="Save" actionListener="#{menuView.save}" update=":mainForm:msgs" icon="ui-icon-disk" />
+                <p:menuitem value="Update" actionListener="#{menuView.update}" update=":mainForm:msgs" icon="ui-icon-arrowrefresh-1-w"/>
             </p:submenu>
             <p:submenu label="Non-Ajax">
-                <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Delete" actionListener="#{menuView.delete}" update=":mainForm:msgs" ajax="false" icon="ui-icon-close"/>
             </p:submenu>
             <p:submenu label="Navigations">
                 <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>

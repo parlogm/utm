@@ -11,7 +11,7 @@ public class WelcomePageRedirect extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
-                .setViewName("forward:/helloworld.xhtml");
+                .setViewName("forward:/pages/test.xhtml");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 
         super.addViewControllers(registry);
