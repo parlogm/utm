@@ -1,7 +1,7 @@
 package ro.utm.java.model;
 
-import ro.utm.homework.domain.Theme;
-import ro.utm.homework.service.ThemeService;
+import ro.utm.java.domain.Theme;
+import ro.utm.java.service.ThemeService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

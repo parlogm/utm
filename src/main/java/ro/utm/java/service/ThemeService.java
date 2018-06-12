@@ -1,6 +1,6 @@
 package ro.utm.java.service;
 
-import ro.utm.homework.domain.Theme;
+import ro.utm.java.domain.Theme;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
