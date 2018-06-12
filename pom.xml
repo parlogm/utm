@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>UTM - Java Project</name>
-    <url>http://www.example.com</url>
+    <url>http://localhost:8080/utm/</url>
     <description>UTM Java Course Homework</description>
 
     <properties>

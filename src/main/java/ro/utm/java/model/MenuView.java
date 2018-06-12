@@ -4,6 +4,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
+//import com.sun.org.apache.xpath.internal.operations.String;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
@@ -53,6 +55,16 @@ public class MenuView {
 
     public MenuModel getModel() {
         return model;
+    }
+
+    public String sendToSettings() {
+        // sau <!--<p:menuitem value="Test" update=":content" outcome="test" icon="ui-icon-disk" />-->
+        //<!--<p:submenu label="Test">
+        //                <p:menuitem value="Test" update=":content" outcome="test" icon="ui-icon-disk" />
+        //            </p:submenu>-->
+        //return "/pages/settings.xhtml";
+        System.out.println("Trying... ");
+        return "/pages/settings.xhtml?faces-redirect=true";
     }
 
     public void save() {
