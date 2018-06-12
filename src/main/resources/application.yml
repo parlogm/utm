@@ -1,0 +1,7 @@
+server:
+  context-path: /utm
+  port: 8080
+
+jsf:
+  primefaces:
+    theme: afterdark
