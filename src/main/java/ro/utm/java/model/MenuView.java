@@ -16,55 +16,8 @@ public class MenuView {
 
     private MenuModel model;
 
-    @PostConstruct
-    public void init() {
-        model = new DefaultMenuModel();
-
-        //First submenu
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Dynamic Submenu");
-
-        DefaultMenuItem item = new DefaultMenuItem("External");
-        item.setUrl("http://www.primefaces.org");
-        item.setIcon("ui-icon-home");
-        firstSubmenu.addElement(item);
-
-        model.addElement(firstSubmenu);
-
-        //Second submenu
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Dynamic Actions");
-
-        item = new DefaultMenuItem("Save");
-        item.setIcon("ui-icon-disk");
-        item.setCommand("#{menuView.save}");
-        item.setUpdate(":mainForm:msgs");
-        secondSubmenu.addElement(item);
-
-        item = new DefaultMenuItem("Delete");
-        item.setIcon("ui-icon-close");
-        item.setCommand("#{menuView.delete}");
-        item.setAjax(false);
-        secondSubmenu.addElement(item);
-
-        item = new DefaultMenuItem("Redirect");
-        item.setIcon("ui-icon-search");
-        item.setCommand("#{menuView.redirect}");
-        secondSubmenu.addElement(item);
-
-        model.addElement(secondSubmenu);
-    }
-
     public MenuModel getModel() {
         return model;
-    }
-
-    public String sendToSettings() {
-        // sau <!--<p:menuitem value="Test" update=":content" outcome="test" icon="ui-icon-disk" />-->
-        //<!--<p:submenu label="Test">
-        //                <p:menuitem value="Test" update=":content" outcome="test" icon="ui-icon-disk" />
-        //            </p:submenu>-->
-        //return "/pages/settings.xhtml";
-        System.out.println("Trying... ");
-        return "/pages/settings.xhtml?faces-redirect=true";
     }
 
     public void save() {

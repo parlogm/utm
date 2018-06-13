@@ -11,24 +11,10 @@
         <h:form>
 
             <h:panelGrid columns="2" cellpadding="10">
-                <!--<p:outputLabel for="basic" value="Basic:" />
+                <p:outputLabel for="basic" value="Basic:" />
                 <p:themeSwitcher id="basic" style="width:165px">
                   <f:selectItem itemLabel="Choose Theme" itemValue="" />
                   <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}"/>
-                </p:themeSwitcher>-->
-
-                <p:outputLabel for="advanced" value="Advanced:" />
-                <p:themeSwitcher id="advanced" style="width:165px" effect="fade" var="t">
-                    <f:selectItem itemLabel="Choose Theme" itemValue="#{null}" />
-                    <f:selectItems value="#{themeSwitcherView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
-
-                    <p:column>
-                        <h:outputText styleClass="ui-theme ui-theme-#{t.name}" style="display-block" />
-                    </p:column>
-
-                    <p:column>
-                        #{t.displayName}
-                    </p:column>
                 </p:themeSwitcher>
             </h:panelGrid>
 
