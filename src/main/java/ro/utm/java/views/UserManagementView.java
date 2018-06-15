@@ -1,5 +1,6 @@
 package ro.utm.java.views;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +38,6 @@ public class UserManagementView implements Serializable {
         userList = userService.getAllUsers();
     }
 
-    public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("User Edited", ((User) event.getObject()).getName());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", ((User) event.getObject()).getName());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
     public void onCellEdit(CellEditEvent event) {
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
@@ -65,7 +56,7 @@ public class UserManagementView implements Serializable {
         userList.add(newlyAddedUser);
         FacesMessage msg = new FacesMessage("New user added", newlyAddedUser.getEmail());
         FacesContext.getCurrentInstance().addMessage(null, msg);
-
+        RequestContext.getCurrentInstance().execute("PF('dlg2').hide();PF('cellUsers').addRow();");
     }
 
     // TODO - check why it doesn't work
