@@ -19,6 +19,7 @@ import java.util.List;
 public class BookManagementView implements Serializable {
 
     private List<Books> books;
+    private List<Books> filteredBooks;
 
     @ManagedProperty("#{bookService}")
     @Autowired
@@ -112,5 +113,13 @@ public class BookManagementView implements Serializable {
 
     public void setAvailable(int available) {
         this.available = available;
+    }
+
+    public List<Books> getFilteredBooks() {
+        return filteredBooks;
+    }
+
+    public void setFilteredBooks(List<Books> filteredBooks) {
+        this.filteredBooks = filteredBooks;
     }
 }

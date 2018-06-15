@@ -16,7 +16,7 @@
             <h:panelGrid columns="2" cellpadding="10">
 
                 <p:dataTable id="books" var="book" value="#{bookManagementView.books}"
-                             widgetVar="cellBooks" >
+                             widgetVar="cellBooks" filteredValue="#{bookManagementView.filteredCars}">
                     <f:facet name="header">
                         Manage Books
                     </f:facet>
