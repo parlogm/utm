@@ -53,6 +53,7 @@
 
                 <p:contextMenu for="users" widgetVar="cMenu">
                     <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellUsers').showCellEditor();return false;"/>
+                    <p:menuitem value="Delete" update="users" icon="ui-icon-close" actionListener="#{userManagementView.deleteUser}"/>
                     <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>
                 </p:contextMenu>
 
@@ -82,7 +83,7 @@
 
                     </p:panelGrid>
 
-                    <p:commandButton value="submit" update=":mainForm:manageUsers:msgs" action="#{userManagementView.onAddNew}"/>
+                    <p:commandButton value="submit" update=":mainForm:manageUsers:msgs" action="#{userManagementView.onAddNew}" oncomplete="PF('cellUsers').addRow();" onsuccess="PF('dlg2').hide();"/>
                 </form>
             </p:dialog>
 

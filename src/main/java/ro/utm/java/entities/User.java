@@ -111,4 +111,15 @@ public class User {
     public void setFirstRole(Role firstRole) {
         this.firstRole = firstRole;
     }
+
+    public User() {
+
+    }
+
+    public User(String name, String lastName, String password, String email) {
+        this.name = name;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+    }
 }

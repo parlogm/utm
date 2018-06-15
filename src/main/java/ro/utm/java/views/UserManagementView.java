@@ -23,7 +23,7 @@ public class UserManagementView implements Serializable {
 
     @ManagedProperty("#{userService}")
     @Autowired
-    private UserService service;
+    private UserService userService;
 
     private String name;
     private String lastName;
@@ -32,7 +32,7 @@ public class UserManagementView implements Serializable {
 
     @PostConstruct
     public void init() {
-        userList = service.getAllUsers();
+        userList = userService.getAllUsers();
     }
 
     public void onRowEdit(RowEditEvent event) {
@@ -57,12 +57,13 @@ public class UserManagementView implements Serializable {
 
     public void onAddNew() {
         // Add one new user to the db & table
-        User newUser = new User();
-        System.out.println(name);
-        /*Car car2Add = service.createCars(1).get(0);
-        cars1.add(car2Add);
-        FacesMessage msg = new FacesMessage("New Car added", car2Add.getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);*/
+        User newUser = new User(name, lastName, password, email);
+        userService.saveUser(newUser);
+        User newlyAddedUser = userService.findUserByEmail(email);
+        userList.add(newlyAddedUser);
+        FacesMessage msg = new FacesMessage("New user added", newlyAddedUser.getEmail());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+
     }
 
     public List<User> getUserList() {
@@ -71,10 +72,6 @@ public class UserManagementView implements Serializable {
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
-    }
-
-    public void setService(UserService service) {
-        this.service = service;
     }
 
     public String getName() {
@@ -107,5 +104,9 @@ public class UserManagementView implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }
