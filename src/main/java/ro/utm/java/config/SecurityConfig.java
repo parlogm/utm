@@ -40,20 +40,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.passwordEncoder(bCryptPasswordEncoder);
     }
 
-    @Override
+    /*@Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        // require all requests to be authenticated except for the resources
-        http.authorizeRequests().antMatchers("/javax.faces.resource/**")
-                .permitAll().anyRequest().authenticated();
-        // login
-        http.formLogin().loginPage("/login.xhtml").permitAll()
-                .failureUrl("/login.xhtml?error=true");
-        // logout
-        http.logout().logoutSuccessUrl("/login.xhtml");
-        // not needed as JSF 2.2 is implicitly protected against CSRF
-        http.csrf().disable();
-    }
+        http.
+                authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/javax.faces.resource/**").permitAll().anyRequest().authenticated() // asta e nou
+                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+                .authenticated().and().csrf().disable().formLogin()
+                .loginPage("/login.xhtml").failureUrl("/login.xhtml?error=true")
+                .defaultSuccessUrl("/admin/home")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and().logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/").and().exceptionHandling()
+                .accessDeniedPage("/access-denied");
+    }*/
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -62,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
     }
 
-    /*@Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         // require all requests to be authenticated except for the resources
         http.authorizeRequests().antMatchers("/javax.faces.resource/**")
@@ -75,6 +81,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // not needed as JSF 2.2 is implicitly protected against CSRF
         http.csrf().disable();
     }
+
+    /*
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth)

@@ -15,7 +15,7 @@
   <h:form prependId="false">
 
     <p:panelGrid columns="1" styleClass="ui-fluid center ui-noborder">
-      <h2>Please login</h2>
+      <h2>Please login or register</h2>
 
       <p:outputLabel value="Login failed!" styleClass="red"
         rendered="${!empty param['error']}" />
@@ -24,6 +24,9 @@
       <p:password id="password" placeholder="Password" />
 
       <p:commandButton value="Login" ajax="false" />
+      <td><h:outputText value="Not a User " />
+        <h:outputLink value="/registration.xhtml">Sign Up</h:outputLink>
+      </td>
     </p:panelGrid>
 
   </h:form>

@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../templates/template.xhtml">
+
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="manageUsers">
+            <p:growl id="msgs" showDetail="true"/>
+            <h:panelGrid columns="2" cellpadding="10">
+
+                <p:dataTable id="users" var="user" value="#{userManagementView.userList}" editable="true" editMode="cell" widgetVar="cellUsers">
+                    <f:facet name="header">
+                        Manage users
+                    </f:facet>
+
+                    <p:ajax event="cellEdit" listener="#{userManagementView.onCellEdit}" update=":mainForm:manageUsers:msgs" />
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{user.name}" />
+                    </p:column>
+
+                    <p:column headerText="Last Name">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{user.lastName}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{user.lastName}" style="width:96%" label="Year"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="E-mail">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{user.email}" /></f:facet>
+                            <f:facet name="input"><p:inputText id="modelInput" value="#{user.email}" style="width:100%"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Status">
+                        <h:outputText rendered="#{user.active == 1}" value="Active" />
+                        <h:outputText rendered="#{user.active == 0}" value="Inactive" />
+                    </p:column>
+
+                    <p:column headerText="Role">
+                        <h:outputText value="#{user.firstRole.role}"/>
+                    </p:column>
+
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+                    </p:column>
+                </p:dataTable>
+
+                <p:contextMenu for="users" widgetVar="cMenu">
+                    <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellUsers').showCellEditor();return false;"/>
+                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>
+                </p:contextMenu>
+
+                <p:commandButton value="Add new user" styleClass="ui-priority-primary" onclick="PF('dlg2').show();"/>
+
+
+            </h:panelGrid>
+
+            <p:dialog header="Add new user" widgetVar="dlg2" modal="false" height="200">
+                <form id="userAdd">
+                    <p:panelGrid columns="2" cellpadding="10">
+                        <p:outputLabel value="Name : " for="name"/>
+                        <h:inputText id="name" value="#{userManagementView.name}"/>
+
+                        <p:outputLabel value="Last name : " for="lastName"/>
+                        <h:inputText id="lastName" value="#{userManagementView.lastName}"/>
+
+                        <p:outputLabel value="E-mail : " for="email"/>
+                        <h:inputText id="email" value="#{userManagementView.email}"/>
+
+                        <h:outputLabel for="pwd1" value="Password 1: *" />
+                        <p:password id="pwd1" value="#{userManagementView.password}" match="pwd2" label="Password 1" required="true" />
+
+                        <h:outputLabel for="pwd2" value="Password 2: *" />
+                        <p:password id="pwd2" value="#{userManagementView.password}" label="Password 2" required="true" />
+
+
+                    </p:panelGrid>
+
+                    <p:commandButton value="submit" update=":mainForm:manageUsers:msgs" action="#{userManagementView.onAddNew}"/>
+                </form>
+            </p:dialog>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
