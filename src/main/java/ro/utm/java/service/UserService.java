@@ -5,9 +5,9 @@ import ro.utm.java.entities.User;
 import java.util.List;
 
 public interface UserService {
-    public User findUserByEmail(String email);
-    public void saveUser(User user);
-    public List<User> getAllUsers();
-    public void removeUser(User user);
-    public void updateUser(User user);
+    User findUserByEmail(String email);
+    void saveUser(User user);
+    List<User> getAllUsers();
+    void removeUser(User user);
+    void updateUser(User user);
 }
