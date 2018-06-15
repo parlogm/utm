@@ -18,7 +18,7 @@
                 <p:menuitem value="Test" update=":content" outcome="test" icon="ui-icon-disk" />
             </p:submenu>
             <p:submenu label="Settings">
-                <p:menuitem value="Profile" process="@all" update=":content" actionListener="#{menuView.sendToSettings}" icon="ui-icon-disk" />
+                <p:menuitem value="Profile" update=":content" outcome="settings" icon="ui-icon-disk" />
             </p:submenu>
             <p:submenu label="Ajax">
                 <p:menuitem value="Save" actionListener="#{menuView.save}" update=":mainForm:msgs" icon="ui-icon-disk" />
