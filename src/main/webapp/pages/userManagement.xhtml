@@ -12,8 +12,8 @@
             <p:growl id="msgs" showDetail="true"/>
             <h:panelGrid columns="2" cellpadding="10">
 
-                <p:dataTable id="users" var="user" rowKey="#{user.email}" value="#{userManagementView.userList}" editable="true" editMode="cell"
-                             selection="#{userManagementView.selectedUser}" widgetVar="cellUsers" selectionMode="single">
+                <p:dataTable id="users" var="user" value="#{userManagementView.userList}" editable="true" editMode="cell"
+                             widgetVar="cellUsers" >
                     <f:facet name="header">
                         Manage users
                     </f:facet>
@@ -48,16 +48,14 @@
                     </p:column>
 
                     <p:column style="width:32px">
-                        <p:commandButton id="delete" update="users" actionListener="#{userManagementView.deleteUser}" image="ui-icon ui-icon-trash" process="@this">
-                            <f:setPropertyActionListener value="#{user}" target="#{userManagementView.selectedUser}" />
-                        </p:commandButton>
+                        <p:commandButton id="delete" update="users" actionListener="#{userManagementView.deleteUser(user)}"
+                                         image="ui-icon ui-icon-trash" process="@this"/>
                     </p:column>
 
                 </p:dataTable>
 
                 <p:contextMenu for="users" widgetVar="cMenu">
                     <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellUsers').showCellEditor();return false;"/>
-                    <p:menuitem value="Delete" update="users" icon="ui-icon-close" actionListener="#{userManagementView.deleteUser()}"/>
                     <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>
                 </p:contextMenu>
 

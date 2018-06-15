@@ -68,9 +68,16 @@ public class UserManagementView implements Serializable {
 
     }
 
+    // TODO - check why it doesn't work
     public void deleteUser() {
         userList.remove(selectedUser);
         userService.removeUser(selectedUser);
+        selectedUser = null;
+    }
+
+    public void deleteUser(User user) {
+        userList.remove(user);
+        userService.removeUser(user);
         selectedUser = null;
     }
 
