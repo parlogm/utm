@@ -9,4 +9,5 @@ public interface UserService {
     public void saveUser(User user);
     public List<User> getAllUsers();
     public void removeUser(User user);
+    public void updateUser(User user);
 }

@@ -1,5 +1,6 @@
 package ro.utm.java.views;
 
+import org.primefaces.PrimeFaces;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
@@ -46,6 +47,11 @@ public class UserManagementView implements Serializable {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+    }
+
+    public void updateSelected() {
+        userService.updateUser(selectedUser);
+        selectedUser = null;
     }
 
     public void onAddNew() {
