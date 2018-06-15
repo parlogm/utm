@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list id="677e681a-05d8-4094-9701-b2484578cdcf" name="do not commit" comment="">
-      <change beforePath="$PROJECT_DIR$/javaProject.iml" beforeDir="false" />
-    </list>
     <list default="true" id="f2b99dfe-13f4-46a4-8269-3973837f90f8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/utm/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/utm/java/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/utm/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/utm/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/utm/java/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/utm/java/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/userManagement.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/userManagement.xhtml" afterDir="false" />
+    </list>
+    <list id="677e681a-05d8-4094-9701-b2484578cdcf" name="do not commit" comment="">
+      <change beforePath="$PROJECT_DIR$/javaProject.iml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,8 +36,8 @@
       <file leaf-file-name="userManagement.xhtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/userManagement.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="55" column="130" selection-start-line="55" selection-start-column="130" selection-end-line="55" selection-end-column="130" />
+            <state relative-caret-position="180">
+              <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -45,8 +45,8 @@
       <file leaf-file-name="UserManagementView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="328">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#647#648#0" expanded="true" />
@@ -73,6 +73,10 @@
                 <element signature="e#3015#3016#0" expanded="true" />
                 <element signature="e#2975#2976#0" expanded="true" />
                 <element signature="e#3021#3022#0" expanded="true" />
+                <element signature="e#3213#3214#0" expanded="true" />
+                <element signature="e#3248#3249#0" expanded="true" />
+                <element signature="e#3302#3303#0" expanded="true" />
+                <element signature="e#3350#3351#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,8 +94,8 @@
       <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state relative-caret-position="170">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,14 +127,15 @@
       <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="28" column="31" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="31" />
+            <state relative-caret-position="336">
+              <caret line="47" column="39" lean-forward="true" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#800#801#0" expanded="true" />
                 <element signature="e#856#857#0" expanded="true" />
                 <element signature="e#1256#1257#0" expanded="true" />
                 <element signature="e#1283#1284#0" expanded="true" />
+                <element signature="e#1458#1459#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -167,6 +172,10 @@
       <find>spring.queries.roles-query</find>
       <find>findUserByEmail</find>
       <find>email</find>
+      <find>cMenu</find>
+      <find>celledit</find>
+      <find>oncelledit</find>
+      <find>onCellEdit</find>
       <find>service</find>
     </findStrings>
   </component>
@@ -199,14 +208,14 @@
         <option value="$PROJECT_DIR$/src/main/webapp/registration.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/repository/impl/UserRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/templates/menu.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/entities/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/entities/User.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/userManagement.xhtml" />
       </list>
@@ -560,11 +569,18 @@
       <option name="project" value="LOCAL" />
       <updated>1529077992233</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="working">
+      <created>1529078933164</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1529078933164</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18354000" />
+    <option name="totallyTimeSpent" value="22454000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
@@ -582,7 +598,7 @@
       <window_info anchor="right" id="JSF" order="4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.42699724" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3815427" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.3278237" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -590,7 +606,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49928468" weight="0.37741047" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42424244" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42424244" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3278237" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.25449872" />
@@ -724,18 +740,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java</url>
-          <line>59</line>
+          <line>61</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java</url>
+          <line>71</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="17" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/service/ThemeService.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1086,30 +1123,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#856#857#0" expanded="true" />
-            <element signature="e#1256#1257#0" expanded="true" />
-            <element signature="e#1283#1284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/entities/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
@@ -1131,10 +1144,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.13.7.RELEASE/spring-data-commons-1.13.7.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="47" column="39" lean-forward="true" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+            <element signature="e#1256#1257#0" expanded="true" />
+            <element signature="e#1283#1284#0" expanded="true" />
+            <element signature="e#1458#1459#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/utm/java/views/UserManagementView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="328">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#647#648#0" expanded="true" />
@@ -1161,14 +1206,18 @@
             <element signature="e#3015#3016#0" expanded="true" />
             <element signature="e#2975#2976#0" expanded="true" />
             <element signature="e#3021#3022#0" expanded="true" />
+            <element signature="e#3213#3214#0" expanded="true" />
+            <element signature="e#3248#3249#0" expanded="true" />
+            <element signature="e#3302#3303#0" expanded="true" />
+            <element signature="e#3350#3351#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/userManagement.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="55" column="130" selection-start-line="55" selection-start-column="130" selection-end-line="55" selection-end-column="130" />
+        <state relative-caret-position="180">
+          <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
         </state>
       </provider>
     </entry>

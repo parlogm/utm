@@ -30,6 +30,8 @@ public class UserManagementView implements Serializable {
     private String email;
     private String password;
 
+    private User selectedUser;
+
     @PostConstruct
     public void init() {
         userList = userService.getAllUsers();
@@ -64,6 +66,12 @@ public class UserManagementView implements Serializable {
         FacesMessage msg = new FacesMessage("New user added", newlyAddedUser.getEmail());
         FacesContext.getCurrentInstance().addMessage(null, msg);
 
+    }
+
+    public void deleteUser() {
+        userList.remove(selectedUser);
+        userService.removeUser(selectedUser);
+        selectedUser = null;
     }
 
     public List<User> getUserList() {
@@ -108,5 +116,13 @@ public class UserManagementView implements Serializable {
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
     }
 }
