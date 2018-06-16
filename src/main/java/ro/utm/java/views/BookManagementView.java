@@ -77,10 +77,15 @@ public class BookManagementView implements Serializable {
     }
 
     public void leaseBook() {
-        System.out.println(leasedToEmail);
         People person = peopleService.findByEmailUnique(leasedToEmail);
         selectedBook.setLeasedTo(person);
         selectedBook.setAvailable(0);
+        bookService.saveBook(selectedBook);
+    }
+
+    public void releaseBook() {
+        selectedBook.setLeasedTo(null);
+        selectedBook.setAvailable(1);
         bookService.saveBook(selectedBook);
     }
 

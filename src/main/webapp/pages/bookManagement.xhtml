@@ -48,7 +48,7 @@
                         <p:commandButton update="mainForm:manageBooks:test2" oncomplete="PF('dlgb3').show()" icon="ui-icon-search" title="Edit">
                             <f:setPropertyActionListener value="#{book}" target="#{bookManagementView.selectedBook}" />
                         </p:commandButton>
-                        <p:commandButton update="mainForm:manageBooks:test3" oncomplete="PF('dlgb4').show()" icon="ui-icon-extlink" title="Lease">
+                        <p:commandButton update="mainForm:manageBooks:test3" oncomplete="PF('dlgb4').show()" icon="ui-icon-extlink" title="Lease/Return">
                             <f:setPropertyActionListener value="#{book}" target="#{bookManagementView.selectedBook}" />
                         </p:commandButton>
                     </p:column>
@@ -116,12 +116,21 @@
                         <p:outputLabel value="Domain : " for="leaseDomain"/>
                         <h:outputText id="leaseDomain" value="#{bookManagementView.selectedBook.domain}"/>
 
-                        <p:outputLabel value="DropDown:" for="dd" />
-                        <p:autoComplete id="dd" dropdown="true" value="#{bookManagementView.leasedToEmail}" completeMethod="#{bookManagementView.completeText}" />
+                        <p:outputLabel value="Lease to :" for="dd" rendered="#{bookManagementView.selectedBook.available == 1}"/>
+                        <p:autoComplete id="dd" dropdown="true" rendered="#{bookManagementView.selectedBook.available == 1}"
+                                        value="#{bookManagementView.leasedToEmail}" completeMethod="#{bookManagementView.completeText}" />
+
+                        <p:outputLabel value="Leased to : " for="leasedTo" rendered="#{bookManagementView.selectedBook.available == 0}"/>
+                        <h:outputText id="leasedTo" value="#{bookManagementView.selectedBook.leasedTo.name} #{bookManagementView.selectedBook.leasedTo.lastName}"
+                                      rendered="#{bookManagementView.selectedBook.available == 0}"/>
                     </p:panelGrid>
 
-                    <p:commandButton value="Submit" update=":mainForm:manageBooks:books"
+                    <p:commandButton value="Submit" update=":mainForm:manageBooks:books" rendered="#{bookManagementView.selectedBook.available == 1}"
                                      process="@this, :mainForm:manageBooks:test3" action="#{bookManagementView.leaseBook}"
+                                     oncomplete="PF('dlgb4').hide()"/>
+
+                    <p:commandButton value="Release" update=":mainForm:manageBooks:books" rendered="#{bookManagementView.selectedBook.available == 0}"
+                                     process="@this, :mainForm:manageBooks:test3" action="#{bookManagementView.releaseBook}"
                                      oncomplete="PF('dlgb4').hide()"/>
                 </h:form>
 
