@@ -40,6 +40,18 @@ public class People {
     @JoinTable(name = "leased_books", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Books> books;
 
+    public People() {
+
+    }
+
+    public People(String name, String lastName, String email, String cnp, int active) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.cnp = cnp;
+        this.active = active;
+    }
+
     public int getId() {
         return id;
     }

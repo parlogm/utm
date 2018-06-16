@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../templates/template.xhtml">
+
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+
+        <h:form id="manageReaders">
+
+            <p:growl id="msgs" showDetail="true"/>
+
+            <h:panelGrid columns="2" cellpadding="10">
+
+                <p:dataTable id="readers" var="person" value="#{peopleManagementView.people}"
+                             widgetVar="cellPeople" filteredValue="#{peopleManagementView.filteredPeople}">
+                    <f:facet name="header">
+                        Manage Readers
+                    </f:facet>
+
+                    <p:column headerText="Name" filterBy="#{person.name}" filterMatchMode="contains">
+                        <h:outputText value="#{person.name}" />
+                    </p:column>
+
+                    <p:column headerText="Last name" filterBy="#{person.lastName}" filterMatchMode="contains">
+                        <h:outputText value="#{person.lastName}" />
+                    </p:column>
+
+                    <p:column headerText="Status">
+                        <h:outputText rendered="#{person.active == 1}" value="Active" />
+                        <h:outputText rendered="#{person.active == 0}" value="Inactive" />
+                    </p:column>
+
+                    <p:column headerText="CNP" filterBy="#{person.cnp}" filterMatchMode="contains">
+                        <h:outputText value="#{person.cnp}"/>
+                    </p:column>
+
+                    <p:column headerText="E-mail">
+                        <h:outputText value="#{person.email}"/>
+                    </p:column>
+
+                    <p:column style="width:100px;text-align: center">
+                        <p:commandButton id="delete" update="readers" actionListener="#{peopleManagementView.deletePerson(person)}" title="Delete"
+                                         image="ui-icon ui-icon-trash" process="@this"/>
+                        <p:commandButton update="mainForm:manageReaders:test2" oncomplete="PF('dlgp3').show()" icon="ui-icon-search" title="Edit">
+                            <f:setPropertyActionListener value="#{person}" target="#{peopleManagementView.selectedPerson}" />
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:panelGrid>
+
+            <p:commandButton value="Add new reader" styleClass="ui-priority-primary" onclick="PF('dlgp2').show();"/>
+
+
+            <p:dialog header="Add new reader" widgetVar="dlgp2" modal="false" height="200">
+                <h:form id="test1">
+                    <p:panelGrid columns="2" cellpadding="10">
+                        <p:outputLabel value="Name : " for="name"/>
+                        <h:inputText id="name" value="#{peopleManagementView.name}"/>
+
+                        <p:outputLabel value="Last name : " for="lastName"/>
+                        <h:inputText id="lastName" value="#{peopleManagementView.lastName}"/>
+
+                        <p:outputLabel value="CNP : " for="cnp"/>
+                        <h:inputText id="cnp" value="#{peopleManagementView.cnp}"/>
+
+                        <p:outputLabel value="E-mail : " for="email"/>
+                        <h:inputText id="email" value="#{peopleManagementView.email}"/>
+
+                    </p:panelGrid>
+
+                    <p:commandButton value="Submit" partialSubmit="true" action="#{peopleManagementView.onAddNew}" />
+                </h:form>
+            </p:dialog>
+
+            <p:dialog header="Edit reader" widgetVar="dlgp3" modal="false" height="200">
+                <h:form id="test2">
+                    <p:panelGrid columns="2" cellpadding="10">
+                        <p:outputLabel value="Name : " for="editName"/>
+                        <h:inputText id="editName" value="#{peopleManagementView.selectedPerson.name}"/>
+
+                        <p:outputLabel value="Last name : " for="editLastName"/>
+                        <h:inputText id="editLastName" value="#{peopleManagementView.selectedPerson.lastName}"/>
+
+                        <p:outputLabel value="CNP : " for="editCNP"/>
+                        <h:inputText id="editCNP" value="#{peopleManagementView.selectedPerson.cnp}"/>
+
+                        <p:outputLabel value="E-mail : " for="editEmail"/>
+                        <h:inputText id="editEmail" value="#{peopleManagementView.selectedPerson.email}"/>
+                    </p:panelGrid>
+
+                    <p:commandButton value="Submit" update=":mainForm:manageReaders:readers"
+                                     process="@this, :mainForm:manageReaders:test2" action="#{peopleManagementView.updateSelected}"
+                                     oncomplete="PF('dlgp3').hide()"/>
+                </h:form>
+
+            </p:dialog>
+        </h:form>
+
+
+
+
+
+    </ui:define>
+</ui:composition>
