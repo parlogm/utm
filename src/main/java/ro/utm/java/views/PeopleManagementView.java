@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class PeopleManagementView implements Serializable {
     private String name;
     private String lastName;
     private String email;
+    @Size(min=13,max=13)
     private String cnp;
     private int active;
 

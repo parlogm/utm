@@ -67,14 +67,15 @@
                         <h:inputText id="lastName" value="#{peopleManagementView.lastName}"/>
 
                         <p:outputLabel value="CNP : " for="cnp"/>
-                        <h:inputText id="cnp" value="#{peopleManagementView.cnp}"/>
+                        <h:inputText id="cnp" value="#{peopleManagementView.cnp}" required="true"/>
+
 
                         <p:outputLabel value="E-mail : " for="email"/>
                         <h:inputText id="email" value="#{peopleManagementView.email}"/>
 
                     </p:panelGrid>
 
-                    <p:commandButton value="Submit" partialSubmit="true" action="#{peopleManagementView.onAddNew}" />
+                    <p:commandButton value="Submit" partialSubmit="true" update=":mainForm:manageReaders:msgs" action="#{peopleManagementView.onAddNew}" />
                 </h:form>
             </p:dialog>
 
