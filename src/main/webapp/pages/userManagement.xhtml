@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../templates/template.xhtml">
+
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="manageUsers">
+            <p:growl id="msgs" showDetail="true"/>
+            <h:panelGrid columns="2" cellpadding="10">
+
+                <p:dataTable id="users" var="user" value="#{userManagementView.userList}"
+                             widgetVar="cellUsers" >
+                    <f:facet name="header">
+                        Manage users
+                    </f:facet>
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{user.name}" />
+                    </p:column>
+
+                    <p:column headerText="Last Name">
+                        <h:outputText value="#{user.lastName}" />
+                    </p:column>
+
+                    <p:column headerText="E-mail">
+                        <h:outputText value="#{user.email}" />
+                    </p:column>
+
+                    <p:column headerText="Status">
+                        <h:outputText rendered="#{user.active == 1}" value="Active" />
+                        <h:outputText rendered="#{user.active == 0}" value="Inactive" />
+                    </p:column>
+
+                    <p:column headerText="Role">
+                        <h:outputText value="#{user.firstRole.role}"/>
+                    </p:column>
+
+                    <p:column style="width:100px;text-align: center">
+                        <p:commandButton id="delete" update="users" actionListener="#{userManagementView.deleteUser(user)}" title="Delete"
+                                         image="ui-icon ui-icon-trash" process="@this"/>
+                        <p:commandButton update="mainForm:manageUsers:editUser" oncomplete="PF('dlg3').show()" icon="ui-icon-search" title="Edit" process="@this">
+                            <f:setPropertyActionListener value="#{user}" target="#{userManagementView.selectedUser}" />
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:panelGrid>
+
+            <p:commandButton value="Add new user" styleClass="ui-priority-primary" onclick="PF('dlg2').show();"/>
+
+            <p:dialog header="Add new user" widgetVar="dlg2" modal="false" height="200">
+                <p:panelGrid columns="2" cellpadding="10">
+                    <p:outputLabel value="Name : " for="name"/>
+                    <h:inputText id="name" value="#{userManagementView.name}"/>
+
+                    <p:outputLabel value="Last name : " for="lastName"/>
+                    <h:inputText id="lastName" value="#{userManagementView.lastName}"/>
+
+                    <p:outputLabel value="E-mail : " for="email"/>
+                    <h:inputText id="email" value="#{userManagementView.email}"/>
+
+                    <h:outputLabel for="pwd1" value="Password 1: *" />
+                    <p:password id="pwd1" value="#{userManagementView.password}" match="pwd2" label="Password 1" required="true" />
+
+                    <h:outputLabel for="pwd2" value="Password 2: *" />
+                    <p:password id="pwd2" value="#{userManagementView.password}" label="Password 2" required="true" />
+
+                </p:panelGrid>
+
+                <p:commandButton value="Submit" update="msgs" action="#{userManagementView.onAddNew}"/>
+            </p:dialog>
+
+            <p:dialog header="Edit user" widgetVar="dlg3" modal="false" height="200">
+                <p:outputPanel id="editUser" style="text-align:center;">
+                    <p:panelGrid columns="2" cellpadding="10">
+                        <p:outputLabel value="Name : " for="editName"/>
+                        <h:inputText id="editName" value="#{userManagementView.selectedUser.name}"/>
+
+                        <p:outputLabel value="Last name : " for="editLastName"/>
+                        <h:inputText id="editLastName" value="#{userManagementView.selectedUser.lastName}"/>
+                    </p:panelGrid>
+
+                    <p:commandButton value="Submit" update="msgs" action="#{userManagementView.updateSelected}"/>
+                </p:outputPanel>
+
+            </p:dialog>
+
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>

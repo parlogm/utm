@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="../templates/template.xhtml">
+
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+
+        <h:form id="manageBooks">
+
+            <p:growl id="msgs" showDetail="true"/>
+
+            <h:panelGrid columns="2" cellpadding="10">
+
+                <p:dataTable id="books" var="book" value="#{bookManagementView.books}"
+                             widgetVar="cellBooks" filteredValue="#{bookManagementView.filteredBooks}">
+                    <f:facet name="header">
+                        Manage Books
+                    </f:facet>
+
+                    <p:column headerText="Book title" filterBy="#{book.name}" filterMatchMode="contains">
+                        <h:outputText value="#{book.name}" />
+                    </p:column>
+
+                    <p:column headerText="Author" filterBy="#{book.author}" filterMatchMode="contains">
+                        <h:outputText value="#{book.author}" />
+                    </p:column>
+
+                    <p:column headerText="Status">
+                        <h:outputText rendered="#{book.available == 1}" value="Available" />
+                        <h:outputText rendered="#{book.available == 0}" value="Leased" />
+                    </p:column>
+
+                    <p:column headerText="Domain">
+                        <h:outputText value="#{book.domain}"/>
+                    </p:column>
+
+                    <p:column headerText="Leased to">
+                        <h:outputText value="#{book.leasedTo.name}"/>
+                    </p:column>
+
+                    <p:column style="width:100px;text-align: center">
+                        <p:commandButton id="delete" update="books" actionListener="#{bookManagementView.deleteBook(book)}" title="Delete"
+                                         image="ui-icon ui-icon-trash" process="@this"/>
+                        <p:commandButton update="mainForm:manageBooks:test2" oncomplete="PF('dlgb3').show()" icon="ui-icon-search" title="Edit">
+                            <f:setPropertyActionListener value="#{book}" target="#{bookManagementView.selectedBook}" />
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:panelGrid>
+
+            <p:commandButton value="Add new book" styleClass="ui-priority-primary" onclick="PF('dlgb2').show();"/>
+
+
+            <p:dialog header="Add new book" widgetVar="dlgb2" modal="false" height="200">
+                <h:form id="test1">
+                    <p:panelGrid columns="2" cellpadding="10">
+                        <p:outputLabel value="Title : " for="name"/>
+                        <h:inputText id="name" value="#{bookManagementView.name}"/>
+
+                        <p:outputLabel value="Author : " for="author"/>
+                        <h:inputText id="author" value="#{bookManagementView.author}"/>
+
+                        <p:outputLabel value="Domain : " for="domain"/>
+                        <p:selectOneMenu id="domain" value="#{bookManagementView.domain}" style="width:150px">
+                            <f:selectItem itemLabel="Select domain" itemValue="" noSelectionOption="false" />
+                            <f:selectItems value="#{domainService.domainList}" />
+                        </p:selectOneMenu>
+
+                    </p:panelGrid>
+
+                    <p:commandButton value="Submit" partialSubmit="true" action="#{bookManagementView.onAddNew}" />
+                </h:form>
+            </p:dialog>
+
+            <p:dialog header="Edit book" widgetVar="dlgb3" modal="false" height="200">
+                <h:form id="test2">
+                    <p:panelGrid columns="2" cellpadding="10">
+                        <p:outputLabel value="Name : " for="editName"/>
+                        <h:inputText id="editName" value="#{bookManagementView.selectedBook.name}"/>
+
+                        <p:outputLabel value="Author : " for="editAuthor"/>
+                        <h:inputText id="editAuthor" value="#{bookManagementView.selectedBook.author}"/>
+
+                        <p:outputLabel value="Domain : " for="editDomain"/>
+                        <p:selectOneMenu id="editDomain" value="#{bookManagementView.selectedBook.domain}" style="width:150px">
+                            <f:selectItem itemLabel="Select domain" itemValue="" noSelectionOption="false" />
+                            <f:selectItems value="#{domainService.domainList}" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+
+                    <p:commandButton value="Submit" update=":mainForm:manageBooks:books"
+                                     process="@this, :mainForm:manageBooks:test2" action="#{bookManagementView.updateSelected}"
+                                     oncomplete="PF('dlgb3').hide()"/>
+                </h:form>
+
+            </p:dialog>
+        </h:form>
+
+
+
+
+
+    </ui:define>
+</ui:composition>
