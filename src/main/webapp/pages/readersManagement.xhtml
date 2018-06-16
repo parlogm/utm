@@ -61,17 +61,17 @@
                 <h:form id="test1">
                     <p:panelGrid columns="2" cellpadding="10">
                         <p:outputLabel value="Name : " for="name"/>
-                        <h:inputText id="name" value="#{peopleManagementView.name}"/>
+                        <h:inputText id="name" value="#{peopleManagementView.name}" required="true"/>
 
                         <p:outputLabel value="Last name : " for="lastName"/>
-                        <h:inputText id="lastName" value="#{peopleManagementView.lastName}"/>
+                        <h:inputText id="lastName" value="#{peopleManagementView.lastName}" required="true"/>
 
                         <p:outputLabel value="CNP : " for="cnp"/>
                         <h:inputText id="cnp" value="#{peopleManagementView.cnp}" required="true"/>
 
 
                         <p:outputLabel value="E-mail : " for="email"/>
-                        <h:inputText id="email" value="#{peopleManagementView.email}"/>
+                        <h:inputText id="email" value="#{peopleManagementView.email}" required="true"/>
 
                     </p:panelGrid>
 
