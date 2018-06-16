@@ -43,6 +43,7 @@ public class BookManagementView implements Serializable {
 
     public void onAddNew() {
         // Add one new user to the db & table
+        available = 1; // when adding books - they are always avaiable
         Books newBook= new Books(name, author, domain, available);
         bookService.saveBook(newBook);
         Books newlyAddedBook = bookService.findBookByTitle(name);

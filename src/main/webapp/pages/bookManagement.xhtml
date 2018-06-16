@@ -16,16 +16,16 @@
             <h:panelGrid columns="2" cellpadding="10">
 
                 <p:dataTable id="books" var="book" value="#{bookManagementView.books}"
-                             widgetVar="cellBooks" filteredValue="#{bookManagementView.filteredCars}">
+                             widgetVar="cellBooks" filteredValue="#{bookManagementView.filteredBooks}">
                     <f:facet name="header">
                         Manage Books
                     </f:facet>
 
-                    <p:column headerText="Book title">
+                    <p:column headerText="Book title" filterBy="#{book.name}" filterMatchMode="contains">
                         <h:outputText value="#{book.name}" />
                     </p:column>
 
-                    <p:column headerText="Author">
+                    <p:column headerText="Author" filterBy="#{book.author}" filterMatchMode="contains">
                         <h:outputText value="#{book.author}" />
                     </p:column>
 
@@ -67,7 +67,10 @@
                         <h:inputText id="author" value="#{bookManagementView.author}"/>
 
                         <p:outputLabel value="Domain : " for="domain"/>
-                        <h:inputText id="domain" value="#{bookManagementView.domain}"/>
+                        <p:selectOneMenu id="domain" value="#{bookManagementView.domain}" style="width:150px">
+                            <f:selectItem itemLabel="Select domain" itemValue="" noSelectionOption="false" />
+                            <f:selectItems value="#{domainService.domainList}" />
+                        </p:selectOneMenu>
 
                     </p:panelGrid>
 
@@ -85,7 +88,10 @@
                         <h:inputText id="editAuthor" value="#{bookManagementView.selectedBook.author}"/>
 
                         <p:outputLabel value="Domain : " for="editDomain"/>
-                        <h:inputText id="editDomain" value="#{bookManagementView.selectedBook.domain}"/>
+                        <p:selectOneMenu id="editDomain" value="#{bookManagementView.selectedBook.domain}" style="width:150px">
+                            <f:selectItem itemLabel="Select domain" itemValue="" noSelectionOption="false" />
+                            <f:selectItems value="#{domainService.domainList}" />
+                        </p:selectOneMenu>
                     </p:panelGrid>
 
                     <p:commandButton value="Submit" update=":mainForm:manageBooks:books"
