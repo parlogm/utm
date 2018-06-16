@@ -12,24 +12,15 @@
 
     <h:form>
 
-        <h3>Toggleable</h3>
+        <h3>Main menu</h3>
         <p:menu toggleable="true">
-            <p:submenu label="Test">
-                <p:menuitem value="Test" outcome="test" icon="ui-icon-disk" />
+            <p:submenu label="Manage">
+                <p:menuitem value="Users" update=":content" outcome="userManagement" icon="ui-icon-disk" />
+                <p:menuitem value="Books" update=":content" outcome="bookManagement" icon="ui-icon-disk" />
+                <p:menuitem value="Readers" update=":content" outcome="readersManagement" icon="ui-icon-disk" />
             </p:submenu>
             <p:submenu label="Settings">
-                <p:menuitem value="Profile" outcome="settings" icon="ui-icon-disk" />
-            </p:submenu>
-            <p:submenu label="Ajax">
-                <p:menuitem value="Save" actionListener="#{menuView.save}" update=":mainForm:msgs" icon="ui-icon-disk" />
-                <p:menuitem value="Update" actionListener="#{menuView.update}" update=":mainForm:msgs" icon="ui-icon-arrowrefresh-1-w"/>
-            </p:submenu>
-            <p:submenu label="Non-Ajax">
-                <p:menuitem value="Delete" actionListener="#{menuView.delete}" update=":mainForm:msgs" ajax="false" icon="ui-icon-close"/>
-            </p:submenu>
-            <p:submenu label="Navigations">
-                <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                <p:menuitem value="Internal" icon="ui-icon-star"/>
+                <p:menuitem value="Profile" update=":content" outcome="settings" icon="ui-icon-disk" />
             </p:submenu>
         </p:menu>
     </h:form>
