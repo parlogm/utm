@@ -1,5 +1,6 @@
 package ro.utm.java.views;
 
+import org.hibernate.validator.constraints.Email;
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import ro.utm.java.entities.Books;
@@ -30,6 +31,7 @@ public class PeopleManagementView implements Serializable {
 
     private String name;
     private String lastName;
+    @Email(message = "must be a valid email")
     private String email;
     @Size(min=13,max=13)
     private String cnp;

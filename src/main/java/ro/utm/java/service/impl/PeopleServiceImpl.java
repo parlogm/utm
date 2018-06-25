@@ -38,4 +38,14 @@ public class PeopleServiceImpl implements PeopleService {
     public void removePerson(People person) {
         peopleRepository.delete(person);
     }
+
+    @Override
+    public List<People> findByEmail(String email) {
+        return peopleRepository.findByEmailContains(email);
+    }
+
+    @Override
+    public People findByEmailUnique(String email) {
+        return peopleRepository.findByEmail(email);
+    }
 }
