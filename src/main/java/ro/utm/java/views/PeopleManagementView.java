@@ -31,7 +31,7 @@ public class PeopleManagementView implements Serializable {
 
     private String name;
     private String lastName;
-    @Email(message = "must be a valid email")
+    @Email(message = "Must be a valid email")
     private String email;
     @Size(min=13,max=13)
     private String cnp;
