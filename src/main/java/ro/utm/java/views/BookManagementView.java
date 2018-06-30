@@ -3,7 +3,9 @@ package ro.utm.java.views;
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import ro.utm.java.entities.Books;
+import ro.utm.java.entities.People;
 import ro.utm.java.service.BookService;
+import ro.utm.java.service.PeopleService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -12,6 +14,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name="bookManagementView")
@@ -25,10 +28,16 @@ public class BookManagementView implements Serializable {
     @Autowired
     private BookService bookService;
 
+    @ManagedProperty("#{peopleService}")
+    @Autowired
+    private PeopleService peopleService;
+
     private String name;
     private String author;
     private String domain;
     private int available;
+    private People leasedTo;
+    private String leasedToEmail;
 
     private Books selectedBook;
 
@@ -39,6 +48,15 @@ public class BookManagementView implements Serializable {
     public void init() {
         books = bookService.getAllBooks();
         selectedBook = new Books();
+    }
+
+    public List<String> completeText(String query) {
+        List<People> peopleList = peopleService.findByEmail(query);
+        List<String> results = new ArrayList<String>();
+        for (People person : peopleList) {
+            results.add(person.getEmail());
+        }
+        return results;
     }
 
     public void onAddNew() {
@@ -56,6 +74,19 @@ public class BookManagementView implements Serializable {
     public void updateSelected() {
         bookService.updateBook(selectedBook);
         selectedBook = null;
+    }
+
+    public void leaseBook() {
+        People person = peopleService.findByEmailUnique(leasedToEmail);
+        selectedBook.setLeasedTo(person);
+        selectedBook.setAvailable(0);
+        bookService.saveBook(selectedBook);
+    }
+
+    public void releaseBook() {
+        selectedBook.setLeasedTo(null);
+        selectedBook.setAvailable(1);
+        bookService.saveBook(selectedBook);
     }
 
     public void deleteBook(Books book) {
@@ -122,5 +153,25 @@ public class BookManagementView implements Serializable {
 
     public void setFilteredBooks(List<Books> filteredBooks) {
         this.filteredBooks = filteredBooks;
+    }
+
+    public People getLeasedTo() {
+        return leasedTo;
+    }
+
+    public void setLeasedTo(People leasedTo) {
+        this.leasedTo = leasedTo;
+    }
+
+    public String getLeasedToEmail() {
+        return leasedToEmail;
+    }
+
+    public void setLeasedToEmail(String leasedToEmail) {
+        this.leasedToEmail = leasedToEmail;
+    }
+
+    public void setPeopleService(PeopleService peopleService) {
+        this.peopleService = peopleService;
     }
 }

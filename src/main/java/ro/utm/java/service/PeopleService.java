@@ -10,4 +10,6 @@ public interface PeopleService {
     People findPersonByCNP(String cnp);
     void updatePerson(People person);
     void removePerson(People person);
+    List<People> findByEmail(String email);
+    People findByEmailUnique(String email);
 }
