@@ -46,6 +46,7 @@ public class PeopleManagementView implements Serializable {
     public void init() {
         people = peopleService.getAllPeople();
         selectedPerson = new People();
+        // test
     }
 
     public void onAddNew() {
